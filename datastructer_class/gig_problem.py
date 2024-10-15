@@ -24,10 +24,19 @@ Orders={
         "end" : "16:20"
     }
 }
-employees = ["A", "B"]
-e1={}
-key=list(Orders.keys())
-for i in range(len(key) and len(employees)):
-        e1[employees[i]]=key[i],Orders[key[i]]
-for key,value in e1.items():
-    print(f"Key: {key}, Value: {value}")
+employees = {"A","B"}
+
+employee_assignment = {"A": "GIG 1", "B": "GIG 2"}
+
+for i in range(0, len(Orders)):
+    current_gig = list(Orders.keys())[i]
+    current_start_time = list(Orders.values())[i]["start"].split(":")
+    print(current_start_time)
+    current_end_time = list(Orders.values())[i]["end"].split(":")
+
+    for employee in employees:
+        if employee not in employee_assignment:
+            employee_assignment[employee] = current_gig
+            break
+
+print(employee_assignment)
